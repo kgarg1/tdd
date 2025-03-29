@@ -37,3 +37,14 @@ describe('Failed Simple String calculator with a method', () => {
         expect(() => add({})).toThrow("Input must be a string");
     });
 });
+
+describe('Failed comma seperated value', () => {
+    test("throws an error when input must be a comma seperated string", () => {
+        expect(() => add("1,3,,5,")).toThrow("Input must be a comma seperated string");
+        expect(() => add("1,,3,,5")).toThrow("Input must be a comma seperated string");
+        expect(() => add("(1,,3,,5")).toThrow("Input must be a comma seperated string");
+        expect(() => add("1,3-5")).toThrow("Input must be a comma seperated string");
+        expect(() => add("1.35")).toThrow("Input must be a comma seperated string");
+    });
+});
+
