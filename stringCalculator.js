@@ -1,5 +1,5 @@
-function isValidCommaSeparatedNumbers(str) {
-    return /^[0-9]+(,[0-9]+)*$/.test(str);
+function isValidCommaSeparatedOrNewLineNumbers(str) {
+    return typeof str === "string" && /^[0-9]+([,\n][0-9]+)*$/.test(str.trim());
 }
 
 function add(numbers) {
@@ -8,10 +8,10 @@ function add(numbers) {
 
     if (!numbers) return 0;
 
-    if (!isValidCommaSeparatedNumbers(numbers))
-        throw new Error("Input must be a comma seperated string");
+    if (!isValidCommaSeparatedOrNewLineNumbers(numbers))
+        throw new Error("Input must be a comma seperated or new line string");
 
-    const arrayNumbers = numbers.split(',');
+    const arrayNumbers = numbers.split(/[\n,]/);
     
     return arrayNumbers.reduce((sum, acc) => (parseInt(sum) + parseInt(acc)), 0);
 }
