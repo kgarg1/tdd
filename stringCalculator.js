@@ -30,7 +30,7 @@ function add(numbers) {
     if (negativeNumbers.length > 0)
         throw new Error(`Negative numbers are not allowed: ${negativeNumbers.join(',')}`);
     
-    return arrayNumbers.reduce((sum, acc) => (parseInt(sum) + parseInt(acc)), 0);
+    return arrayNumbers.reduce((sum, acc) => (parseInt(sum) + (acc > 1000 ? 0 : parseInt(acc))), 0);
 }
 
 module.exports = add;

@@ -56,6 +56,13 @@ describe('Support different delimiters', () => {
     });
 });
 
+describe('Check the 1000 Value more than 1000 to 0', () => {
+    test("return sum ignoring numbers greater than 1000", () => {
+        expect(add("1001,0,1008,2")).toBe(2);
+        expect(add("5000,3,1008,2")).toBe(5);
+    });
+});
+
 describe('Failed Simple String calculator with a method', () => {
     test("throws an error when input is not a string", () => {
         expect(() => add(5)).toThrow("Input must be a string");
