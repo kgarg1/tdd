@@ -36,6 +36,26 @@ describe('Allow the add method to handle any amount of numbers', () => {
     });
 });
 
+describe('Support different delimiters', () => {
+    test("semicolon (;) as a delimiter", () => {
+        expect(add("//;\n1;2;6")).toBe(9);
+    });
+
+    test("Pipe (|) as a delimiter", () => {
+        expect(add("//|\n9|1|2")).toBe(12);
+    });
+
+    test("Different delimiters while keeping existing functionality", () => {
+        expect(add("//.\n11.12.13")).toBe(36);
+        expect(add("//@\n9@1@1")).toBe(11);
+        expect(add("//#\n110#80#30")).toBe(220);
+    });
+
+    test("Support default delimiters (comma and newline)", () => {
+        expect(add("1,2\n3")).toBe(6);
+    });
+});
+
 describe('Failed Simple String calculator with a method', () => {
     test("throws an error when input is not a string", () => {
         expect(() => add(5)).toThrow("Input must be a string");
@@ -45,6 +65,7 @@ describe('Failed Simple String calculator with a method', () => {
         expect(() => add({})).toThrow("Input must be a string");
     });
 });
+
 
 describe('Failed comma or new line seperated value', () => {
     test("throws an error when input must be a comma seperated or new line string", () => {
