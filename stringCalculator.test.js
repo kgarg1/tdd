@@ -83,3 +83,14 @@ describe('Failed comma or new line seperated value', () => {
     });
 });
 
+
+describe('Failed for negative Numbers', () => {
+    test("Throw the negative numbers are not allowed", () => {
+        const numbers = Array.from({ length: 50000 }, () => Math.floor(Math.random() * 100));
+        numbers[1] = -5;
+        numbers[10] = -40;
+        numbers[100] = -70;
+        const commaSeparated = numbers.join('\n');
+        expect(() => add(commaSeparated)).toThrow("Negative numbers are not allowed: -5,-40,-70");
+    });
+});
