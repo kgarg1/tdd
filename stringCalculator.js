@@ -23,7 +23,8 @@ function add(numbers) {
 
     let delimiter = /[\n,]/;
 
-    const customDelimiterMatch = numbers.match(/^\/\/(\[.*\]|\S)\n/);
+    const customDelimiterMatch = numbers.match(/^\/\/(\[.*\]|\S+)\n/);
+    
 
     if (customDelimiterMatch) {
         let customDelimiterPart = customDelimiterMatch[1];

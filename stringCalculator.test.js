@@ -65,6 +65,11 @@ describe('Support different delimiters', () => {
         expect(add("//[***][%%]\n1***2%%3")).toBe(6);
         expect(add("//[####][!!]\n1####2!!4")).toBe(7);
     });
+
+    test("Allow multiple delimiters like this: “//[delim1][delim2]\n", () => {
+        expect(add("//[*][%]\n1*2%3")).toBe(6);
+        expect(add("//[####][!!]\n1####2!!4")).toBe(7);
+    });
 });
 
 describe('Check the 1000 Value more than 1000 to 0', () => {
