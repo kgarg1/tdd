@@ -54,6 +54,17 @@ describe('Support different delimiters', () => {
     test("Support default delimiters (comma and newline)", () => {
         expect(add("1,2\n3")).toBe(6);
     });
+
+
+    test("Multi-character custom delimiter", () => {
+        expect(add("//[*****]\n1*****2*****3")).toBe(6);
+        expect(add("//[###]\n4###5###6")).toBe(15);
+    });
+
+    test("Multiple custom delimiters", () => {
+        expect(add("//[***][%%]\n1***2%%3")).toBe(6);
+        expect(add("//[####][!!]\n1####2!!4")).toBe(7);
+    });
 });
 
 describe('Check the 1000 Value more than 1000 to 0', () => {
