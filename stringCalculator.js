@@ -1,7 +1,9 @@
+// Function to escape special characters for regex usage
 function escapeRegExp(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // Escape special regex characters
 }
 
+// Function to validate the input string with delimiters (comma or new line by default)
 function isValidCommaSeparatedOrNewLineNumbers(str, delimiter = /[\n,]/) {
     if (typeof str !== "string") return false;
 
@@ -11,7 +13,7 @@ function isValidCommaSeparatedOrNewLineNumbers(str, delimiter = /[\n,]/) {
     // allowing for negative numbers and ensuring proper formatting.
     const regex = new RegExp(`^-?\\d+(?:(${escapedDelimiter})-?\\d+)*$`);
 
-    // Ensure that the string confirms to the regex pattern, allowing mixed delimiters
+    // Ensure that the string confirm to the regex pattern, allowing mixed delimiters
     return regex.test(str.trim());
 }
 
