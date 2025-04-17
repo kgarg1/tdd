@@ -26,9 +26,11 @@ function add(numbers) {
     let delimiter = /[\n,]/;
 
     const customDelimiterMatch = numbers.match(/^\/\/(\[.*\]|\S+)\n/);
-    
 
+    let isMultiplication = false;
+    
     if (customDelimiterMatch) {
+        let firstPart = customDelimiterMatch[0];
         let customDelimiterPart = customDelimiterMatch[1];
 
         if (customDelimiterPart.startsWith("[")) {
@@ -45,6 +47,10 @@ function add(numbers) {
             delimiter = new RegExp(escapeRegExp(customDelimiterPart));
         }
 
+        if(customDelimiterMatch[0].includes('*')) {
+            isMultiplication = true;
+        }
+
         numbers = numbers.substring(customDelimiterMatch[0].length); // Remove delimiter definition
     }
 
@@ -58,6 +64,10 @@ function add(numbers) {
     if (negativeNumbers.length > 0)
         throw new Error(`Negative numbers are not allowed: ${negativeNumbers.join(',')}`);
     
+    if (isMultiplication) {
+        return arrayNumbers.reduce((sum, acc) => (parseInt(sum) * (acc > 1000 ? 0 : parseInt(acc))), 1);
+    }
+
     return arrayNumbers.reduce((sum, acc) => (parseInt(sum) + (acc > 1000 ? 0 : parseInt(acc))), 0);
 }
 

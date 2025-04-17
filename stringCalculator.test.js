@@ -41,6 +41,10 @@ describe('Support different delimiters', () => {
         expect(add("//;\n1;2;6")).toBe(9);
     });
 
+    test("Multiple (*) as a delimiter", () => {
+        expect(add("//*\n1*2*6")).toBe(12);
+    });
+
     test("Pipe (|) as a delimiter", () => {
         expect(add("//|\n9|1|2")).toBe(12);
     });
